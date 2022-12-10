@@ -21,6 +21,15 @@ app.post("/createUser", async (req, res) => {
 
     res.json(user)
 })
+app.get("/getUsers", (request, response) => {
+    UserModel.find({}, (err, result) => {
+      if (!err) {
+        response.json(result);
+      } else {
+        response.json(err);
+      }
+    });
+  });
 
 
 app.listen(port,()=>{
